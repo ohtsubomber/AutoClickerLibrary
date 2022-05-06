@@ -5,6 +5,16 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <PackageId>AutoClickerLibrary</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>Ohtsubomber</Authors>
+    <Description>simple mouse and keyboard emulator for windows</Description>
+    <PackageLicenseExpression> Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/ohtsubomber/AutoClickerLibrary/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ohtsubomber/AutoClickerLibrary.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
