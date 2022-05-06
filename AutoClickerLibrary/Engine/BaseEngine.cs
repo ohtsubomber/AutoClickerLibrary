@@ -12,7 +12,7 @@ namespace AutoClicker.Engine
         private string ImageDir = "";
         public async Task ExecuteScriptAsync(string script)
         {
-            var lines = script.Split(new string[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
+            var lines = script.Split(new string[] {"\r\n","\n"}, StringSplitOptions.RemoveEmptyEntries);
             foreach (var line in lines)
             {
                 var args = line.ToLower().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
