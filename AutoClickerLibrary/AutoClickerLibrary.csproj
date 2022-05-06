@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
 
     <PackageId>AutoClickerLibrary</PackageId>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <Authors>Ohtsubomber</Authors>
     <Description>simple mouse and keyboard emulator for windows</Description>
     <PackageLicenseExpression> Apache-2.0</PackageLicenseExpression>
