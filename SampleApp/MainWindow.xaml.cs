@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoClicker.Actions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -32,6 +33,7 @@ namespace SampleApp
                 while (true)
                 {
                     var position = AutoClicker.Actions.Mouse.GetPos();
+                    var pixelColor = position.GetPixelColor();
                     Footer = $"{position.X} {position.Y}";
                     await Task.Delay(100);
                 }

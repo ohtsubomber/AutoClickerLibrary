@@ -27,6 +27,20 @@ namespace AutoClicker.Actions
         private const int MOUSEEVENTF_MIDDLEDOWN = 0x20;
         private const int MOUSEEVENTF_MIDDLEUP = 0x40;
 
+        [DllImportAttribute("gdi32.dll")]
+        private static extern int BitBlt
+        (
+            IntPtr hdcDest,     // handle to destination DC (device context)
+            int nXDest,         // x-coord of destination upper-left corner
+            int nYDest,         // y-coord of destination upper-left corner
+            int nWidth,         // width of destination rectangle
+            int nHeight,        // height of destination rectangle
+            IntPtr hdcSrc,      // handle to source DC
+            int nXSrc,          // x-coordinate of source upper-left corner
+            int nYSrc,          // y-coordinate of source upper-left corner
+            System.Int32 dwRop  // raster operation code
+        );
+
         public enum ClickTypes
         {
             LEFT = 0x1,
@@ -56,6 +70,23 @@ namespace AutoClicker.Actions
             var pt = new POINT();
             GetCursorPos(out pt);
             return pt;
+        }
+
+        public static Color GetPixelColor(this Point pt)
+        {
+            var screen = Actions.Display.GetScreenShot();
+            using (Graphics gdest = Graphics.FromImage(screen))
+            {
+                using (Graphics gsrc = Graphics.FromHwnd(IntPtr.Zero))
+                {
+                    IntPtr hSrcDC = gsrc.GetHdc();
+                    IntPtr hDC = gdest.GetHdc();
+                    int retval = BitBlt(hDC, 0, 0, 1, 1, hSrcDC, pt.X, pt.Y, (int)CopyPixelOperation.SourceCopy);
+                    gdest.ReleaseHdc();
+                    gsrc.ReleaseHdc();
+                }
+            }
+            return screen.GetPixel(0, 0);
         }
 
         public static async Task ClickAsync()
